@@ -6,5 +6,6 @@ $e=$_POST['time'];
 $f=$_POST['timeto'];
 $q="insert into name(device,date,time,timeto)values('$c','$d','$e','$f')";
 $s=mysqli_query($con,$q);
-header('location:new9.php');
+header('location:html.php');
 ?>
+
