@@ -1,0 +1,32 @@
+import serial
+import MySQLdb
+import time
+obj=serial.Serial('COM7',9600)
+
+if obj.isOpen()==False:
+    obj.open()
+    time.sleep(2)
+#con=MySQLdb.connect("localhost","root","","auto");
+
+
+while True:
+    time.sleep(2)
+    con=MySQLdb.connect("localhost","root","","auto");
+    cursor=con.cursor()
+    cursor.execute("select * from name")
+    row=cursor.fetchone();
+    print row,
+    a=row[1]
+    b=row[2]
+    c=row[3]
+    d=row[4]
+    obj.write(a)
+    time.sleep(1)
+    print "hello"
+    obj.write(b)
+    time.sleep(1)
+    obj.write(c)
+    time.sleep(1)
+    obj.write(d)
+obj.close()
+
